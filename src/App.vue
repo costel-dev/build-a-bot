@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="app">
     <header>
       <nav>
         <ul>
@@ -11,19 +11,22 @@
       </nav>
     </header>
     <main>
-      <HomePage />
+      <!-- <HomePage /> -->
+      <RobotBuilder />
     </main>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HomePage from "@/components/HomePage.vue";
+/* import HomePage from "@/components/HomePage.vue"; */
+import RobotBuilder from "@/components/RobotBuilder.vue";
 
 export default {
   name: "App",
   components: {
-    HomePage,
+    /*  HomePage, */
+    RobotBuilder,
   },
 };
 </script>
@@ -34,7 +37,14 @@ body {
   background-attachment: fixed;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
+main {
+  margin: 0 auto;
+  padding: 30px;
+  background-color: white;
+  width: 1024px;
+  min-height: 300px;
 }
 header {
   background-color: #999;
@@ -54,12 +64,5 @@ ul {
 .logo {
   vertical-align: middle;
   height: 30px;
-}
-main {
-  margin: 0 auto;
-  padding: 30px;
-  background-color: white;
-  width: 1024px;
-  min-height: 300px;
 }
 </style>

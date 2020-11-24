@@ -26,4 +26,8 @@ export default {
 .robot {
   height: 300px;
 }
+.get-started {
+  padding-top: 20px;
+  font-size: 25px;
+}
 </style>
