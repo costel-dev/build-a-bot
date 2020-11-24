@@ -3,7 +3,7 @@
     <button class="add-to-cart" @click="addToCart()">Add To Cart</button>
     <!-- HEAD Part -->
     <div class="top-row">
-      <div class="top part">
+      <div :class="[saleBorderClass, 'top', 'part']">
         <div class="robot-name">
           {{ selectedRobot.head.title }}
           <span v-if="selectedRobot.head.onSale" class="sale"> Sale! </span>
@@ -107,6 +107,9 @@ export default {
     };
   },
   computed: {
+    saleBorderClass() {
+      return this.selectedRobot.head.onSale ? "sale-border" : "";
+    },
     selectedRobot() {
       return {
         head: availableParts.heads[this.selectedHeadIndex],
@@ -198,9 +201,9 @@ export default {
   width: 165px;
   height: 165px;
   border: 3px solid #aaa;
-}
-.part img {
-  width: 165px;
+  img {
+    width: 165px;
+  }
 }
 .top-row {
   display: flex;
@@ -220,16 +223,43 @@ export default {
 }
 .left {
   border-right: none;
+  img {
+    transform: rotate(-90deg);
+  }
+  .prev-selector {
+    top: -28px;
+    left: -3px;
+    width: 144px;
+    height: 25px;
+  }
+  .next-selector {
+    top: auto;
+    bottom: -28px;
+    left: -3px;
+    width: 144px;
+    height: 25px;
+  }
 }
 .right {
   border-left: none;
+  img {
+    transform: rotate(90deg);
+  }
+  .prev-selector {
+    top: -28px;
+    left: 24px;
+    width: 144px;
+    height: 25px;
+  }
+  .next-selector {
+    top: auto;
+    bottom: -28px;
+    left: 24px;
+    width: 144px;
+    height: 25px;
+  }
 }
-.left img {
-  transform: rotate(-90deg);
-}
-.right img {
-  transform: rotate(90deg);
-}
+
 .bottom {
   border-top: none;
 }
@@ -252,35 +282,6 @@ export default {
 .center .prev-selector,
 .center .next-selector {
   opacity: 0.8;
-}
-.left .prev-selector {
-  top: -28px;
-  left: -3px;
-  width: 144px;
-  height: 25px;
-}
-.left .next-selector {
-  top: auto;
-  bottom: -28px;
-  left: -3px;
-  width: 144px;
-  height: 25px;
-}
-.right .prev-selector {
-  top: -28px;
-  left: 24px;
-  width: 144px;
-  height: 25px;
-}
-.right .next-selector {
-  top: auto;
-  bottom: -28px;
-  left: 24px;
-  width: 144px;
-  height: 25px;
-}
-.right .next-selector {
-  right: -3px;
 }
 .robot-name {
   position: absolute;
@@ -309,5 +310,8 @@ th {
 }
 .cost {
   text-align: right;
+}
+.sale-border {
+  border: 3px solid red;
 }
 </style>
